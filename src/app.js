@@ -1,9 +1,12 @@
-import "./App.css";
+import { SearchInput } from "./components/SearchInput";
+import "./global/App.css";
 
 export const App = () => {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <h2>Food Search</h2>
+
+      <SearchInput />
     </div>
   );
 };
