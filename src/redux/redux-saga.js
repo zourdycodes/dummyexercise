@@ -24,5 +24,5 @@ export function onLoadRecipe() {
 const recipeSaga = [fork(onLoadRecipe)];
 
 export default function rootSaga() {
-  all([...recipeSaga]);
+  return all([...recipeSaga]);
 }
