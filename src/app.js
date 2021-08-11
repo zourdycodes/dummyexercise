@@ -1,4 +1,5 @@
 import { SearchInput } from "./components/SearchInput";
+import { SearchResult } from "./components/SearchResult";
 import "./global/App.css";
 
 export const App = () => {
@@ -7,6 +8,7 @@ export const App = () => {
       <h2 className="title">Food Search</h2>
 
       <SearchInput />
+      <SearchResult />
     </div>
   );
 };
