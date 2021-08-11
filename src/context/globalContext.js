@@ -37,6 +37,7 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        dispatch,
         query,
         setQuery,
         error: state.error,

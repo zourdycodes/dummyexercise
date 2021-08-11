@@ -14,6 +14,12 @@ export const reducer = (state, action) => {
         error: true,
       };
 
+    case "FETCH_DATA_LOADING":
+      return {
+        ...state,
+        loading: true,
+      };
+
     default:
       return {
         ...state,

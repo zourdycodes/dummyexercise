@@ -20,12 +20,13 @@ const useStyles = makeStyles((theme) => ({
 export const SearchInput = ({ children }) => {
   const [search, setSearch] = useState("");
 
-  const { setQuery } = useContext(AppContext);
+  const { setQuery, dispatch } = useContext(AppContext);
 
   const classes = useStyles();
 
   const updateQuery = () => {
     setQuery(search);
+    dispatch({ type: "FETCH_DATA_LOADING" });
     setSearch("");
   };
 
