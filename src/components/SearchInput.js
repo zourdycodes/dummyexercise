@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,10 +17,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const SearchInput = () => {
+  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("chicken");
+
   const classes = useStyles();
+
+  const updateSearch = () => {
+    setQuery(search);
+    setSearch("");
+  };
+
+  console.log(query);
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="outlined-basic" label="Search Food" variant="outlined" />
+      <TextField
+        id="outlined-basic"
+        label="Search Food"
+        variant="outlined"
+        type="text"
+        value={search}
+        onChange={({ target }) => setSearch(target.value)}
+      />
       <Button
         variant="contained"
         color="primary"
@@ -29,6 +47,7 @@ export const SearchInput = () => {
           width: "auto",
           height: "53px",
         }}
+        onClick={updateSearch}
       >
         Search
       </Button>
