@@ -6,7 +6,7 @@ export const App = () => {
     <div className="App">
       <h2 className="title">Food Search</h2>
 
-      <SearchInput></SearchInput>
+      <SearchInput />
     </div>
   );
 };
