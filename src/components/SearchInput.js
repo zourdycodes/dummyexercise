@@ -2,7 +2,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as types from "../redux/actionTypes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +28,13 @@ export const SearchInput = () => {
     setQuery(search);
     setSearch("");
   };
+
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: types.FETCH_RECIPE_START, payload: query });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
 
   console.log(query);
   return (

@@ -1,6 +1,5 @@
 import { SearchInput } from "./components/SearchInput";
 import "./global/App.css";
-import { getRecipes } from "./redux/api";
 
 export const App = () => {
   return (
