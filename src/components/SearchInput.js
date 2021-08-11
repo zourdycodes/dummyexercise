@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../context/globalContext";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,9 +20,14 @@ const useStyles = makeStyles((theme) => ({
 export const SearchInput = ({ children }) => {
   const [search, setSearch] = useState("");
 
-  const { query, setQuery } = useContext(AppContext);
+  const { setQuery } = useContext(AppContext);
 
   const classes = useStyles();
+
+  const updateQuery = () => {
+    setQuery(search);
+    setSearch("");
+  };
 
   return (
     <div>
@@ -44,6 +49,7 @@ export const SearchInput = ({ children }) => {
             width: "auto",
             height: "53px",
           }}
+          onClick={updateQuery}
         >
           Search
         </Button>
