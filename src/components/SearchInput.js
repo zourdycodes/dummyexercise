@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
 import { useContext, useState } from "react";
 import { AppContext } from "../context/globalContext";
+import { SnackbarError } from "./Snackbar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,16 +18,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const SearchInput = ({ children }) => {
+export const SearchInput = () => {
   const [search, setSearch] = useState("");
 
-  const { setQuery, dispatch } = useContext(AppContext);
+  const [open, setOpen] = useState(false);
+
+  const { setQuery, dispatch, error } = useContext(AppContext);
 
   const classes = useStyles();
 
   const updateQuery = () => {
     setQuery(search);
     dispatch({ type: "FETCH_DATA_LOADING" });
+
+    if (!search || error) {
+      setOpen(true);
+    }
+
     setSearch("");
   };
 
@@ -55,7 +63,8 @@ export const SearchInput = ({ children }) => {
           Search
         </Button>
       </form>
-      {children}
+
+      {open && <SnackbarError open={open} setOpen={setOpen} />}
     </div>
   );
 };

@@ -23,9 +23,11 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(url);
+
       if (!response.ok && response.status >= 400 && response.status <= 500) {
         dispatch({ type: "FETCH_DATA_FAILED" });
       }
+
       const data = await response.json();
 
       dispatch({ type: "FETCH_DATA_SUCCESS", payload: data.hits });
